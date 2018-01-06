@@ -5,24 +5,24 @@ To set it up please
 
 install the gems
 
-´´´
+```
 $ bundle install --without production
-´´´
+```
 
 update the database
 
-´´´
+```
 $ rails db:migrate
-´´´
+```
 
 run the test suite
 
-´´´
+```
 $ rails test
-´´´
+```
 
 and run the server
 
-´´´
+```
 $ rails server
-´´´
+```
