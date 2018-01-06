@@ -1,24 +1,28 @@
-# README
+# Sample App following
+## [*Michael Hartl's Ruby on Rails Tutorial - Learn Web Development with Rails 4th Edition*](http://railstutorial.org)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To set it up please
 
-Things you may want to cover:
+install the gems
 
-* Ruby version
+´´´
+$ bundle install --without production
+´´´
 
-* System dependencies
+update the database
 
-* Configuration
+´´´
+$ rails db:migrate
+´´´
 
-* Database creation
+run the test suite
 
-* Database initialization
+´´´
+$ rails test
+´´´
 
-* How to run the test suite
+and run the server
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+´´´
+$ rails server
+´´´
