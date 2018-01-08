@@ -1,0 +1,36 @@
+@import "bootstrap";
+
+body {
+	padding-top: 1rem;
+	margin: auto;
+	width: 90%;
+}
+
+.header-card {
+	margin: auto;
+	margin-bottom: 2rem;
+	.navbar {
+		border-radius: 10px;
+	}
+}
+
+#navbar-brand {
+	font-size: 1.7em;
+	color: #fff;
+	letter-spacing: -1px;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.content-container {
+	width: 95%;
+	margin: auto;
+}
+
+.content-card {
+	background: #D4D4D4;
+	border-radius: 10px;
+	text-align: center;
+	margin-bottom: 1rem;
+	padding: 1rem;
+}
