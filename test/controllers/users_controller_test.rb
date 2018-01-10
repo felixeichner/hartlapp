@@ -1,10 +1,13 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get signup_path
-    assert_response :success
-    assert_select "title", full_title("Sign up") 
+  def setup
+  	@user = User.create(name: "Example", email: "test@example.com", password: "111111")
   end
 
+  test "should get show of certain user" do
+  	get user_path(@user)
+  	assert_response :success
+  	assert_select "title", full_title("User Profile: Example")
+  end
 end
