@@ -1,0 +1,24 @@
+<% provide(:page_title, "Log in") %>
+
+<div class="content-card">
+	<h1 class="center">Log in</h1>
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+			<%= form_for(:session, url: login_path) do |f| %>
+				<%= f.label :email %>
+				<%= f.email_field :email, class: "form-control" %>
+
+				<%= f.label :password %>
+				<%= f.password_field :password, class: "form-control" %>
+
+				<%= f.submit "Log in", class: "btn btn-lg btn-primary",
+																			 style: "margin-top:40px;" %>
+			<% end %>
+
+			<p>New User? <%= link_to "Sign up instead!", signup_path %></p>
+		</div>
+		<div class="col-md-4">
+		</div>		
+</div>

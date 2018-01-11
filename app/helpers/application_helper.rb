@@ -8,4 +8,8 @@ module ApplicationHelper
 			page_title + ' | ' + base_title
 		end
 	end
+
+	def active(controller, action, id = nil)
+		"active" if current_page?(controller: controller, action: action, id: id)
+	end
 end
