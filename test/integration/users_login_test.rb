@@ -31,4 +31,13 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   	get root_path
   	assert flash.empty?
   end
+
+  test "user already logged in" do
+    post login_path, params: { session: { email: @user.email, password: 'password' } }
+    get login_path
+    assert_redirected_to @user
+    follow_redirect!
+    assert_template "users/show"
+    assert flash[:success] == "You are already logged in!"
+  end
 end
