@@ -1,0 +1,12 @@
+<% provide(:page_title, "Users Overview") %>
+
+<h1 class="center">Users Overview</h1>
+<div class="content-card">
+	<%= will_paginate(@users, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer,
+														class: "pagination-bar-top") %>
+	<ul class="users">
+			<%= render @users %>
+	</ul>
+	<%= will_paginate(@users, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer,
+														class: "pagination-bar-bottom") %>
+</div>

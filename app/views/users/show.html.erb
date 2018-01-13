@@ -7,8 +7,15 @@
 		<div class="col-md-auto">
 			<%= gravatar_for(@user, size: 45) %>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<h2><%= @user.name %></h2>
+			<% if @user == current_user %>
+				<%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+				<%= link_to "Delete Account", user_path(@user),
+																			method: :delete,
+																			data: { confirm: "Delete Account?" },
+																			class: "btn btn-danger" %>
+			<% end %>		
 		</div>
 		<div class="col-md-auto">
 			<h4>Name: <%= @user.name %></h4>

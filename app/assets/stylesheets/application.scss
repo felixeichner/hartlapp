@@ -84,6 +84,27 @@ body {
 	text-align: center;
 }
 
+.pagination-bar-top {
+	padding-top: 40px;
+	padding-left: 80px;
+}
+
+.pagination-bar-bottom {
+	padding-bottom: 40px;
+	padding-left: 80px;
+}
+
+.users {
+	list-style: none;
+	padding: 30px;
+	li {
+		font-size: 1.5rem;
+		font-weight: bold;
+		margin-left: 50px;
+		margin-bottom:20px;
+	}
+}
+
 #session_remember_me {
 	width: auto;
 	margin-left: 0;

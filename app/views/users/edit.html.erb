@@ -1,0 +1,5 @@
+<% provide(:page_title, "Edit Profile | #{@user.name}") %>
+<% provide(:form_title, "Edit Profile of #{@user.name}") %>
+<% provide(:button_text, "Update profile") %>
+
+<%= render 'form', user: @user, url: user_path(@user) %>
