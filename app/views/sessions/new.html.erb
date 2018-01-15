@@ -11,6 +11,7 @@
 				<%= f.email_field :email, autofocus: true, class: "form-control" %>
 
 				<%= f.label :password %>
+				<%= link_to "(forgot password)", new_password_reset_path %>
 				<%= f.password_field :password, class: "form-control" %>
 
 				<%= f.label :remember_me, class: "checkbox inline" do %>
@@ -18,8 +19,7 @@
 					<span>Remember me on this computer</span>
 				<% end %>
 
-				<%= f.submit "Log in", class: "btn btn-lg btn-primary",
-																			 style: "margin-top:40px;" %>
+				<%= f.submit "Log in", class: "btn btn-lg btn-primary" %>
 			<% end %>
 
 			<p>New User? <%= link_to "Sign up instead!", signup_path %></p>

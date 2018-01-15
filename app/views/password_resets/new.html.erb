@@ -1,0 +1,18 @@
+<% provide(:page_title, "Sign up") %>
+
+<div class="content-card">
+	<h1 class="center">Reset Password</h1>
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+			<%= form_for(:password_reset, url: password_resets_path) do |f| %>
+				<%= f.label :email %>
+				<%= f.email_field :email, autofocus: true, class: "form-control" %>
+
+				<%= f.submit "Send Reset Link", class: "btn btn-lg btn-primary" %>
+			<% end %>
+		</div>
+		<div class="col-md-4">
+		</div>		
+</div>
