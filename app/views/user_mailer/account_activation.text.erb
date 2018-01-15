@@ -1,0 +1,9 @@
+Hi <%= @user.name %>,
+
+please activate your account by copying and pasting this link to your browser address bar.
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+
+
+Welcome to Hartl Sample App, run by Felix!

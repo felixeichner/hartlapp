@@ -1,0 +1,8 @@
+<h1>Welcome to Hartl Sample App, run by Felix!</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>please activate your account by clicking on this link:</p>
+
+<%= link_to "Activate your account", edit_account_activation_url(@user.activation_token,
+																																 email: @user.email) %>

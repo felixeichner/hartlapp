@@ -12,8 +12,13 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 		assert_template "users/index"
 		assert_select "ul[class=?]", "pagination", count: 2
 		User.paginate(page: 1, per_page: 15).each do |user|
-			assert_select "a[href=?]", user_path(user), text: user.name
-			assert_select "a[href=?]", user_path(user), text: "Delete User"
+			if user.activated?
+				assert_select "a[href=?]", user_path(user), text: user.name
+				assert_select "a[href=?]", user_path(user), text: "Delete User"
+			else
+				assert_select "a[href=?]", user_path(user), text: user.name, count: 0
+				assert_select "a[href=?]", user_path(user), text: "Delete User", count: 0	
+			end
 		end
 	end
 
@@ -23,9 +28,18 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 		assert_template "users/index"
 		assert_select "ul[class=?]", "pagination", count: 2
 		User.paginate(page: 1, per_page: 15).each do |user|
-			assert_select "a[href=?]", user_path(user), text: user.name
-			assert_select "a[href=?]", user_path(user), text: "Delete User", count: 1 if @non_admin == user
-			assert_select "a[href=?]", user_path(user), text: "Delete User", count: 0 if @non_admin != user
+			if user.activated?
+			 	assert_select "a[href=?]", user_path(user), text: user.name
+				assert_select "a[href=?]", user_path(user),
+											text: "Delete User", count: 1 if @non_admin == user
+				assert_select "a[href=?]", user_path(user),
+											text: "Delete User", count: 0 if @non_admin != user
+			else
+			 	assert_select "a[href=?]", user_path(user), text: user.name, count: 0
+				assert_select "a[href=?]", user_path(user), text: "Delete User", count: 0
+			end
 		end
 	end	
+
+
 end
