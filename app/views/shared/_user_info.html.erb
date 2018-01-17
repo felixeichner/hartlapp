@@ -1,0 +1,9 @@
+<div class="row">
+	<div class="col-auto">
+		<%= link_to gravatar_for(current_user, size: 150), user_path(current_user) %>
+	</div>
+	<div class="col-auto">
+		<p><%= link_to current_user.name, user_path(current_user) %></p>
+		<p><%= pluralize(current_user.microposts.count, "micropost") %></p>
+	</div>
+</div>

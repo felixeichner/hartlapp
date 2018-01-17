@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 7)
     unless @user.activated?
       flash[:danger] = "User is not yet verified!"
       redirect_back_or root_url
@@ -57,14 +58,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "You need to be logged in!"
-        redirect_to login_path
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])

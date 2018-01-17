@@ -138,6 +138,52 @@ input {
 		font-weight: normal;
 }
 
+
+/*
+ * microposts
+*/
+
+.user_info {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.micropost_form {
+	.picture {
+		border: none;
+	}
+}
+
+.show-identity {
+	margin: 5px;
+	.btn {
+		padding-top: 5px;
+	}
+}
+
+.microposts {
+	list-style: none;
+	padding-bottom: 20px;
+	.content {
+		display: block;
+		margin-left: 70px;
+		font-weight: bold;
+	}
+	.timestamp {
+		display: block;
+		margin-left: 70px;
+		font-style: italic;
+		color: #A6A6A6;
+	}
+	.gravatar {
+		float: left;
+	}
+	.content img {
+		max-width: 95%;
+		max-height: 90%;
+	}
+}
+
 /*
  * footer
 */

@@ -19,14 +19,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect edit when not logged in" do
   	get edit_user_path(@user)
-  	assert flash[:danger] = "You need to be logged in!"
+  	assert_equal flash[:danger], "You need to be logged in!"
   	assert_redirected_to login_url
   end
 
   test "should redirect update when not logged in" do
   	patch user_path(@user), params: { user: { name: "Michael", email: "email@michael.com" } }
   	assert_redirected_to login_path
-  	assert flash[:danger] = "You need to be logged in!"
+  	assert_equal flash[:danger], "You need to be logged in!"
 		@user.reload
   	assert_equal @user.name, "Test Name"
   	assert_equal @user.email, "test@mail.com"
