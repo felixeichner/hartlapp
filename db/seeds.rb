@@ -6,6 +6,24 @@ User.create!(name: 										"Felix Google",
 						 activated: 							true,
 						 activated_at: 						Time.zone.now)
 
+names = []
+99.times do |n|
+	names.push(Faker::Simpsons.character)
+end
+number = 1
+names.uniq.each do |n|
+	name = 															n
+	email = 														"email_#{number}@mail.com"
+	password = 													"111111"
+	User.create!(name: 									name,
+							 email: 								email,
+							 password: 							password,
+							 password_confirmation: password,
+							 activated: 						true,
+							 activated_at: 					Time.zone.now)
+	number += 1
+end
+
 User.create!(name: 										"Felix GMX",
 						 email: 									"feichner@gmx.net",
 						 password: 								"111111",
@@ -30,20 +48,23 @@ User.create!(name: 										"Tom",
 						 activated: 							true,
 						 activated_at: 						Time.zone.now)
 
-99.times do |n|
-	name = 															Faker::Name.name
-	email = 														"example#{n+1}@mail.com"
-	password = 													"111111"
-	User.create!(name: 									name,
-							 email: 								email,
-							 password: 							password,
-							 password_confirmation: password,
-							 activated: 						true,
-							 activated_at: 					Time.zone.now)
+contents = []
+50.times do
+	content = "a"*150
+	until content.length < 141
+		content = "#{Faker::Friends.quote} (by #{Faker::Friends.character})"
+	end
+	contents.push(content)
+end
+users = User.order(:created_at).take(9)
+contents.each do |content|
+	users.shuffle.first.microposts.create!(content: content)
 end
 
-users = User.order(:created_at).take(6)
-50.times do
-	content = Faker::Lorem.sentence(5)
-	users.each { |user| user.microposts.create!(content: content) }
+users.each do |user|
+	users2 = User.order(:created_at).take(10).shuffle
+	rand(4..9).times do
+		user2 = users2.pop
+		user.follow(user2) unless user == user2
+	end
 end

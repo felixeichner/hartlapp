@@ -79,4 +79,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal flash[:success], "Profile successfully deleted!"
     assert_redirected_to users_path
   end
+
+  test "should redirect following and followers when not logged in" do
+    get following_user_path(@user)
+    assert_redirected_to login_url
+    
+    get followers_user_path(@user)
+    assert_redirected_to login_url
+  end
 end

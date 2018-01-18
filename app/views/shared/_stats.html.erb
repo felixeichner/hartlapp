@@ -1,0 +1,16 @@
+<% @user ||= current_user %>
+<div class="row">
+	<div class="col-auto center">
+		<%= link_to(following_user_path(@user), class: "stat", id: "following") do %>
+			<p><%= @user.following.count %></p>
+			<p>following</p>
+		<% end %>
+	</div>
+	<div class="col-auto center" id="followers">
+		<%= link_to(followers_user_path(@user), class: "stat") do %>
+			<p><%= @user.followers.count %></p>
+			<p><%= "follower".pluralize(@user.followers.count) %></p>
+		<% end %>
+	</div>
+</div>
+<hr>

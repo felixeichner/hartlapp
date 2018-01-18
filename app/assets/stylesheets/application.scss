@@ -105,6 +105,20 @@ body {
 	}
 }
 
+.stats {
+	display: block;
+	font-weight: bold;
+	font-size: 1.6rem;
+	color: #6E6E6E;
+	a {
+		font-size: 1.6rem;
+		color: #6E6E6E;
+	}
+	p {
+		line-height: 50%;
+	}
+}
+
 #session_remember_me {
 	width: auto;
 	margin-left: 0;

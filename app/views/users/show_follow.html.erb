@@ -1,0 +1,45 @@
+<% provide(:title, @title) %>
+<div class="content-card">
+	<div class="row">
+		<aside class="col-md-4">
+			<section class="user_info">
+				<div class="row">
+					<div class="col-auto">
+						<%= link_to gravatar_for(@user, size: 150), user_path(@user) %>
+					</div>
+					<div class="col-auto">
+						<p><%= link_to @user.name, user_path(@user) %></p>
+						<p><%= pluralize(@user.microposts.count, "micropost") %></p>
+					</div>
+				</div>
+				<hr>
+			</section>
+			<section class="stats">
+				<%= render 'shared/stats' %>
+				<% if @users.any? %>
+					<div class="user_avatars">
+						<% @users.each do |user| %>
+							<%= link_to gravatar_for(user, size: 30), user %>
+						<% end %>
+					</div>
+				<% end %>
+			</section>
+		</aside>
+		<div class="col-md-8">
+			<h2 style="font-weight: bold"><%= @title %></h2>
+			<% if @users.any? %>
+				<ul class="users">
+						<%= render @users %>
+				</ul>
+				<%= will_paginate(@users, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer,
+																	class: "pagination-bar-bottom") %>
+			<% else %>
+				<% if @title == "Following" %>
+					<p>Currently not following any users</p>
+				<% else %>
+					<p>Currently no users following</p>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

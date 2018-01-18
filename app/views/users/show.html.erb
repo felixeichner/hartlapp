@@ -9,7 +9,7 @@
 				</div>
 				<div class="col-auto">
 					<h3><%= @user.name %></h3>
-					<% if @user == current_user %>
+					<% if current_user?(@user) %>
 						<p>
 							<%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
 						</p>
@@ -22,6 +22,14 @@
 					<% end %>		
 				</div>
 			</div>
+			<hr>
+			<section class="col-md-12 stats">
+				<%= render 'shared/stats' %>
+			</section>
+			<section class="col-md-12">
+				<%= render 'follow_form' if logged_in? %>
+			</section>
+
 		</div>
 		<div class="col-auto">
 			<% if @user.microposts.any? %>

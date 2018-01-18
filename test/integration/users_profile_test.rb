@@ -19,5 +19,13 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
 		@user.microposts.paginate(page: 1, per_page: 7).each do |micropost|
 			assert_match micropost.content, response.body
 		end
+    assert_select 'a[id=following][class=stat]' do
+      assert_select 'p', @user.following.count.to_s
+      assert_select 'p', 'following'
+    end
+    assert_select 'a[class=stat]' do
+      assert_select 'p', @user.followers.count.to_s
+      assert_select 'p', 'follower'.pluralize(@user.followers.count)
+    end
 	end
 end
